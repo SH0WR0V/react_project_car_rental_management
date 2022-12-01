@@ -5,8 +5,19 @@ import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
+import Login from './Components/Login';
+import Logout from './Components/Logout';
+import ViewCarList from './Components/ViewCarList';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
+
+var token=null;
+if(localStorage.getItem('user')){
+  var obj = JSON.parse(localStorage.getItem('user'));
+  token = obj.access_token;
+}
+axios.defaults.headers.common["Authorization"] = token;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +27,9 @@ root.render(
         <Switch>
           <Route exact path="/"><Home/></Route>
           <Route exact path="/profile"><Profile/></Route>
-          
+          <Route exact path="/login"><Login/></Route>
+          <Route exact path="/view_car_list"><ViewCarList/></Route>
+          <Route exact path="/logout"><Logout/></Route>
         </Switch>
     <Footer/>
         
