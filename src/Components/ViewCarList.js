@@ -1,27 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+const ViewCarList = ()=>{
 
-const ViewCarList=()=>
-{
-    const [data, setData] = useState([]);
-
-    useEffect(()=>{
-        axios.get("http://localhost:8000/api/view_car_list")
-        .then((response)=>
-        {
-            setData(response.data);
-        }).catch((err)=>{console.log(err);
+        const [carData, setCarData] = useState([]);
+    
+        useEffect(()=>{
+            axios.get("http://localhost:8000/api/view_car_list")
+            .then(resp=>{
+                console.log(resp.data);
+                setCarData(resp.data);
+            }).catch(err=>{
+                console.log(err);
+            });
         },[]);
-        
-    });
-    return(
+
+    return (
         <div>
-            <ul>
-                {data.map(item=>(
-                    <li key={item.id}>{item.car_name}</li> 
+        <table>
+                    <tr>
+                        <th>Car Name</th>
+                        <th>Model Name</th>
+                    </tr>
+                {carData.map(carData=>(
+                    <tr key={carData.id}>
+                        <td >{carData.car_name}</td>
+                        <td >{carData.car_model}</td>
+                    </tr>
                 ))}
-            </ul>
+            </table>
         </div>
+
     )
+
 }
 export default ViewCarList;
