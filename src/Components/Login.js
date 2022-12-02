@@ -23,8 +23,9 @@ const Login = ()=>{
     return(
         <div>
             <form>
-                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+                <br />
+                Email: <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input><br />
+                Password: <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input><br />
 
             </form>
                 <button onClick={loginSubmit}>Login</button>
