@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
+import Registration from './Components/Registration';
 import Login from './Components/Login';
 import ViewCarList from './Components/ViewCarList';
 import Logout from './Components/Logout';
@@ -27,6 +28,7 @@ root.render(
         <Switch>
           <Route exact path="/"><Home/></Route>
           <Route exact path="/profile"><Profile/></Route>
+          <Route exact path="/registration"><Registration/></Route>
           <Route exact path="/login"><Login/></Route>
           <Route exact path="/view_car_list"><ViewCarList/></Route>
           <Route exact path="/logout"><Logout/></Route>
