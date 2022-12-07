@@ -9,20 +9,19 @@ const Logout=()=>
     const navigate = useHistory();
 
     
-    const [data, setData] = useState("");
+    let user = JSON.parse(localStorage.getItem('user'));
 
-    useEffect(()=>{
-        axios.put("http://localhost:8000/api/logout")
-        .then((response)=>
-        {
-            setData(response.data);
-          
-        },[]).catch((err)=>{console.log(err);
+    var obj = {token: user.access_token};
+
+        axios.post("http://localhost:8000/api/logout",obj)
+        .then(resp=>{
+            var token = resp.data;
+            console.log(token);
+            localStorage.removeItem('user');
+        }).catch(err=>{
+            console.log(err);
         });
-        
-    });
-    
-    localStorage.removeItem('user');
+
     navigate.push('/login');
 }
 export default Logout;

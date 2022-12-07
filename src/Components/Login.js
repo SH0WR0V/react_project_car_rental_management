@@ -13,10 +13,20 @@ const Login = ()=>{
         axios.post("http://127.0.0.1:8000/api/login",obj)
         .then(resp=>{
             var token = resp.data;
-            var user = {userId: token.userid, access_token:token.token};
+            var user = {userId: token.userid, type:token.type, access_token:token.token};
             localStorage.setItem('user',JSON.stringify(user));
             console.log(localStorage.getItem('user'));
-            navigate.push('/view_car_list');
+            // navigate.push('/view_car_list');
+
+            if(token.type=="Admin"){
+                navigate.push('/admin_home');
+            }
+            else if(token.type=="Customer"){
+                navigate.push('/customer_home');
+            }
+            else if(token.type=="Renter"){
+                navigate.push('/renter_home');
+            }
             
         }).catch(err=>{
             console.log(err);

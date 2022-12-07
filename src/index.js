@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './Components/Home';
+import AdminHome from './Components/AdminHome';
+import CustomerHome from './Components/CustomerHome';
+import RenterHome from './Components/RenterHome';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
@@ -31,6 +34,9 @@ root.render(
           <Route exact path="/registration"><Registration/></Route>
           <Route exact path="/login"><Login/></Route>
           <Route exact path="/view_car_list"><ViewCarList/></Route>
+          <Route exact path="/admin_home"><AdminHome/></Route>
+          <Route exact path="/customer_home"><CustomerHome/></Route>
+          <Route exact path="/renter_home"><RenterHome/></Route>
           <Route exact path="/logout"><Logout/></Route>
         </Switch>
     <Footer/>
