@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Logout=()=>
 {
-    const navigate = useHistory();
+    const navigate = useNavigate();
 
     
     let user = JSON.parse(localStorage.getItem('user'));
@@ -22,6 +22,6 @@ const Logout=()=>
             console.log(err);
         });
 
-    navigate.push('/login');
+    navigate('/login');
 }
 export default Logout;
