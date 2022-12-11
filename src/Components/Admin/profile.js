@@ -1,33 +1,33 @@
-import React from 'react';
-import CustomerNavbar from './CustomerNavbar';
+import React from "react";
+import Adminnav from "./nav";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Table } from "react-bootstrap";
-const DashboardCustomer=()=>
-{
+const Profile=()=>{
     const [ffile, setProfile] = useState([]);
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem('user'));
         var obj = {id:user.userId};
-        axios.post("http://localhost:8000/api/dashboard_customer",obj)
+        axios.post("http://localhost:8000/api/dashboard_admin",obj)
         .then((result) => {
          console.log(result)
          setProfile(result.data);
         })
         .catch((error)=>{
-            console.log(error);
+         alert(error)
         });
      },[]);
     return(
         <div>
-            <CustomerNavbar/>
+            <Adminnav/>
+            <h1>This Is Profile Page</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Profile Pic</th>
-                        <th>User Details</th>
-                        <th>Information</th>
+                    <th>Profile Pic</th>
+                        <th>Personal Info</th>
+                        <th>Details</th>
                         <th>Address</th>
                         <th>NID</th>
                         <th>DL number</th>
@@ -49,16 +49,16 @@ const DashboardCustomer=()=>
                                                     className="rounded-circle"
                                                     />
                                                 <div className="ms-3">
-                                                    <p >{ ffile.first_name +" "+ ffile.last_name}</p>
-                                                    <p >{ ffile.username }</p>
-                                                    <p >{  ffile.email }</p>
+                                                    <p >Name : { ffile.first_name +" "+ ffile.last_name}</p>
+                                                    <p >Username : { ffile.username }</p>
+                                                    <p >Email : {  ffile.email }</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p>{ ffile.dob }</p>
-                                            <p>{ ffile.gender}</p>
-                                            <p>{ ffile.phone_number }</p>
+                                            <p>Data Of Birth : { ffile.dob }</p>
+                                            <p>Gender : { ffile.gender}</p>
+                                            <p>Contact Number : { ffile.phone_number }</p>
                                         </td>
                                         <td>
                                             <p>{ ffile.address }</p>
@@ -78,4 +78,4 @@ const DashboardCustomer=()=>
         </div>
     )
 }
-export default DashboardCustomer;
+export default Profile;

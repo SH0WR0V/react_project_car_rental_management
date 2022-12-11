@@ -25,6 +25,7 @@ const Registration = ()=>{
         border: "1px solid black",
         width: "30%",
         margin: "auto",
+        marginBottom:"3%",
         padding: "10px",
         display:"flex",
         flexDirection:"column",
@@ -32,6 +33,8 @@ const Registration = ()=>{
         justifyContent:"center",
         minHeight:"100px", 
         borderRadius:"4px",
+        boxShadow: "3px 3px 3px #9E9E9E"
+
     };
     
     const loginInputStyle={
@@ -73,8 +76,6 @@ const Registration = ()=>{
             alert("Please fill all the fields");
             console.log(err);
         });
-
-
     }
     return(
         <div>
@@ -85,9 +86,9 @@ const Registration = ()=>{
             <form>
                 <br />
                 
-                <label>Choose Role</label>  
-                <input type="radio" value="Renter" name="type" onChange={(e)=>setType(e.target.value)} /> Renter
-                <input type="radio" value="Customer" name="type" onChange={(e)=>setType(e.target.value)} /> Customer
+                <label>Choose Role  </label>  
+                <input type="radio" value="Renter" name="type" onChange={(e)=>setType(e.target.value)} />  Renter
+                <input type="radio" value="Customer" name="type" onChange={(e)=>setType(e.target.value)} />  Customer
                 
                 <br /><br />
                     

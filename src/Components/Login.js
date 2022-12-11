@@ -13,16 +13,21 @@ const Login = ()=>{
     const navigate = useNavigate();
 
     const loginStyle={
+        backgroundColor:"#282c34",
+        textColor:"white",
         border: "1px solid black",
         width: "20%",
         margin: "auto",
+        marginTop:"3%",
+        marginBottom:"4%",
         padding: "10px",
         display:"flex",
         flexDirection:"column",
         alignItems:"center",
         justifyContent:"center",
         minHeight:"100px", 
-        borderRadius:"4px",
+        borderRadius:"7px",
+        boxShadow: "3px 3px 3px #9E9E9E"
     };
     
     const loginInputStyle={
@@ -37,8 +42,8 @@ const Login = ()=>{
 
     }
     const loginButtonStyle={
-        backgroundColor:"#282c34",
-        borderRadius:"4px",
+        backgroundColor:"#3CBDCB",
+        borderRadius:"6px",
         alignItems:"center",
         border:"2px solid #282c34",
         color:"#fff",
@@ -54,23 +59,34 @@ const Login = ()=>{
         axios.post("http://127.0.0.1:8000/api/login",obj)
         .then(resp=>{
 
-            var token = resp.data;
-            var user = {userId: token.userid, type:token.type, access_token:token.token};
-            // var abc=UserProfile.setName(user.userId);
-            // console.log(abc);
-            localStorage.setItem('user',JSON.stringify(user));
-            console.log(localStorage.getItem('user'));
+            if(resp.data == "Block")
+            {
+                alert("The User has been Blocked!");
+            }
+            else{
+                var token = resp.data;
+                var user = {userId: token.userid, type:token.type, access_token:token.token};
+                localStorage.setItem('user',JSON.stringify(user));
+                console.log(localStorage.getItem('user'));
+
+            // var token = resp.data;
+            // var user = {userId: token.userid, type:token.type, access_token:token.token};
+            // // var abc=UserProfile.setName(user.userId);
+            // // console.log(abc);
+            // localStorage.setItem('user',JSON.stringify(user));
+            // console.log(localStorage.getItem('user'));
             // navigate.push('/view_car_list');
 
             if(token.type=="Admin"){
-                navigate('/admin_home');
+                navigate('/adminprofile');
             }
             else if(token.type=="Customer"){
                 navigate('/customer_home');
             }
             else if(token.type=="Renter"){
-                navigate('/renter_home');
+                navigate('/dashboard_renter');
             }
+        }
             
         }).catch(err=>{
             console.log(err);
@@ -87,7 +103,7 @@ const Login = ()=>{
         <div style={loginStyle}>
             
             
-			<h2>Login</h2>
+			<h2 style={{color: "white"}}>Login</h2>
             
             <form>
                 <br />

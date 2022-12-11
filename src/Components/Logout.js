@@ -18,10 +18,11 @@ const Logout=()=>
             var token = resp.data;
             console.log(token);
             localStorage.removeItem('user');
+            navigate('/login');
+
         }).catch(err=>{
             console.log(err);
         });
 
-    navigate('/login');
 }
 export default Logout;

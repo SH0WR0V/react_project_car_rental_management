@@ -14,10 +14,22 @@ const CustomerHome=(props)=>
     // .catch(function (error) {
     //     alert(error)
     // })
+    const loginStyle={
+        width: "50%",
+        margin: "auto",
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        minHeight:"100px", 
+    };
     return(
         <div>
             <CustomerNavbar/>
-            <h2>This is our Customer Home Page</h2>
+            <div style={loginStyle}>
+            <h2>Welcome to Customer Home Page</h2>
+            </div>
         </div>
     )
 }

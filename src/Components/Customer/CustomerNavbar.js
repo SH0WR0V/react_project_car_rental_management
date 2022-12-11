@@ -14,6 +14,12 @@ function CustomerNavbar() {
     const goViewCarList=()=>{
       navigate("/view_car_list");
     }
+    const goPostForACar=()=>{
+      navigate("/post_for_a_car");
+    }
+    const goManageYourPost=()=>{
+      navigate("/manage_my_post");
+    }
     const goNotice=()=>{
       navigate("/notice");
     }
@@ -25,6 +31,8 @@ function CustomerNavbar() {
       <Container fluid>
             <Button variant="outline-success" onClick={goProfile}>Profile</Button>
             <Button variant="outline-success" onClick={goViewCarList}>View Car List</Button>
+            <Button variant="outline-success" onClick={goPostForACar}>Post For A Car</Button>
+            <Button variant="outline-success" onClick={goManageYourPost}>Manage Your Post</Button>
             <Button variant="outline-success" onClick={goNotice}>Notices</Button>
             <Button variant="outline-success" onClick={goLogOut}>Logout</Button>
       </Container>
